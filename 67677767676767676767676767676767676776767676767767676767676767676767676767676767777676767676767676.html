@@ -1,0 +1,281 @@
+<xmp>
+<!DOCTYPE html>
+<!-- Объявляем браузеру: это HTML5-документ -->
+
+<html lang="ru">
+<!-- Корневой тег. lang="ru" = язык страницы русский -->
+
+<head>
+<!-- Служебный блок, не отображается на странице -->
+
+    <meta charset="UTF-8">
+    <!-- Кодировка UTF-8 — чтобы русские буквы отображались корректно -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Адаптация под мобильные: ширина = ширина экрана, масштаб 100% -->
+
+    <title>Git Шпаргалка</title>
+    <!-- Заголовок вкладки браузера -->
+
+    <style>
+    /* ---------- СТИЛИ (оформление) ---------- */
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0d1117;            /* тёмный фон в стиле GitHub */
+            color: #c9d1d9;                 /* светло-серый текст */
+            max-width: 1100px;              /* ограничение ширины */
+            margin: 0 auto;                 /* центрирование по горизонтали */
+            padding: 20px;                  /* внутренние отступы */
+            line-height: 1.6;               /* межстрочный интервал */
+        }
+
+        h1 {
+            color: #58a6ff;                 /* синий заголовок */
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #79c0ff;                 /* синий подзаголовок */
+            margin-top: 30px;
+        }
+
+        /* Таблица: 2 колонки — код слева, объяснение справа */
+        table.cheat {
+            width: 100%;
+            border-collapse: collapse;      /* убирает двойные границы */
+            margin-bottom: 25px;
+            background: #161b22;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+
+        table.cheat th {
+            background: #21262d;
+            color: #79c0ff;
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid #30363d;
+            letter-spacing: 0.5px;
+        }
+
+        table.cheat td {
+            padding: 12px 16px;
+            vertical-align: top;            /* выравнивание по верху */
+            border-bottom: 1px solid #21262d;
+        }
+
+        /* ЛЕВАЯ колонка — код */
+        table.cheat td.code {
+            width: 45%;                     /* 45% ширины — код */
+            font-family: 'Consolas', monospace;
+            color: #ff7b72;                 /* красноватый, как в GitHub */
+            white-space: pre-wrap;          /* перенос длинных строк */
+            border-right: 1px solid #21262d;
+        }
+
+        /* ПРАВАЯ колонка — объяснение */
+        table.cheat td.desc {
+            width: 55%;                     /* 55% ширины — пояснение */
+            color: #c9d1d9;
+        }
+
+        table.cheat tr:hover td {
+            background: #1c2128;            /* подсветка строки при наведении */
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- Видимая часть страницы -->
+
+    <h1>🚀 Git Шпаргалка</h1>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 1. НАСТРОЙКА                                          -->
+    <!-- ============================================================ -->
+    <h2>⚙️ Настройка</h2>
+    <table class="cheat">
+        <tr>
+            <th>Команда</th>       <!-- заголовок левой колонки -->
+            <th>Что делает</th>    <!-- заголовок правой колонки -->
+        </tr>
+        <tr>
+            <td class="code">git config --global user.name "Ваше Имя"</td>
+            <td class="desc">Задаёт имя, которое будет подписывать каждый коммит. <code>--global</code> = для всех репозиториев на компьютере.</td>
+        </tr>
+        <tr>
+            <td class="code">git config --global user.email "you@example.com"</td>
+            <td class="desc">Задаёт email для подписи коммитов. Именно он привязывает коммиты к вашему аккаунту на GitHub.</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 2. СОЗДАНИЕ И КЛОНИРОВАНИЕ                           -->
+    <!-- ============================================================ -->
+    <h2>📁 Создание и клонирование</h2>
+    <table class="cheat">
+        <tr>
+            <th>Команда</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td class="code">git init</td>
+            <td class="desc">Создаёт скрытую папку <code>.git</code> в текущей директории — превращает её в Git-репозиторий.</td>
+        </tr>
+        <tr>
+            <td class="code">git clone URL</td>
+            <td class="desc">Скачивает готовый удалённый репозиторий к вам на компьютер целиком, вместе со всей историей.</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 3. ОСНОВНЫЕ КОМАНДЫ                                   -->
+    <!-- ============================================================ -->
+    <h2>📝 Основные команды</h2>
+    <table class="cheat">
+        <tr>
+            <th>Команда</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td class="code">git status</td>
+            <td class="desc">Показывает, какие файлы изменены, какие подготовлены к коммиту, а какие Git ещё не отслеживает.</td>
+        </tr>
+        <tr>
+            <td class="code">git add file.txt</td>
+            <td class="desc">Кладёт конкретный файл в staging area (индекс) — подготовка к следующему коммиту.</td>
+        </tr>
+        <tr>
+            <td class="code">git add .</td>
+            <td class="desc">То же самое, но для всех файлов в текущей папке. Точка <code>.</code> = «здесь и рекурсивно вниз».</td>
+        </tr>
+        <tr>
+            <td class="code">git commit -m "Сообщение"</td>
+            <td class="desc">Сохраняет всё из staging как снимок (snapshot). <code>-m</code> — сообщение прямо в команде.</td>
+        </tr>
+        <tr>
+            <td class="code">git log --oneline</td>
+            <td class="desc">Показывает историю коммитов в компактном виде: по одной строке на коммит (хэш + сообщение).</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 4. ВЕТКИ                                             -->
+    <!-- ============================================================ -->
+    <h2>🌿 Ветки</h2>
+    <table class="cheat">
+        <tr>
+            <th>Команда</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td class="code">git branch</td>
+            <td class="desc">Показывает список всех локальных веток. Текущая помечена звёздочкой <code>*</code>.</td>
+        </tr>
+        <tr>
+            <td class="code">git branch new-feature</td>
+            <td class="desc">Создаёт новую ветку <code>new-feature</code>, но не переключается на неё.</td>
+        </tr>
+        <tr>
+            <td class="code">git checkout new-feature</td>
+            <td class="desc">Переключается на существующую ветку.</td>
+        </tr>
+        <tr>
+            <td class="code">git checkout -b new-feature</td>
+            <td class="desc">Создаёт ветку и сразу переключается на неё. Флаг <code>-b</code> = branch.</td>
+        </tr>
+        <tr>
+            <td class="code">git merge new-feature</td>
+            <td class="desc">Вливает ветку <code>new-feature</code> в текущую. Может вызвать конфликт — придётся разрешать вручную.</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 5. УДАЛЁННЫЙ РЕПОЗИТОРИЙ                              -->
+    <!-- ============================================================ -->
+    <h2>☁️ Удалённый репозиторий</h2>
+    <table class="cheat">
+        <tr>
+            <th>Команда</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td class="code">git remote add origin URL</td>
+            <td class="desc">Привязывает удалённый репозиторий под псевдонимом <code>origin</code>. Теперь можно писать <code>origin</code> вместо длинного URL.</td>
+        </tr>
+        <tr>
+            <td class="code">git push -u origin main</td>
+            <td class="desc">Отправляет ветку <code>main</code> на GitHub. Флаг <code>-u</code> запоминает связь, дальше хватит <code>git push</code>.</td>
+        </tr>
+        <tr>
+            <td class="code">git pull origin main</td>
+            <td class="desc">Скачивает и сразу вливает изменения из удалённого <code>main</code> в ваш локальный.</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 6. ПОШАГОВАЯ ЗАГРУЗКА ЭТОГО ФАЙЛА                     -->
+    <!-- ============================================================ -->
+    <h2>💻 Загрузка этого файла на GitHub — по шагам</h2>
+    <table class="cheat">
+        <tr>
+            <th>Команда</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td class="code">git init</td>
+            <td class="desc">Превращает текущую папку в локальный Git-репозиторий. Появляется папка <code>.git</code>.</td>
+        </tr>
+        <tr>
+            <td class="code">git add git-cheatsheet.html</td>
+            <td class="desc">Кладёт именно наш HTML-файл в staging — готовим его к первому коммиту.</td>
+        </tr>
+        <tr>
+            <td class="code">git commit -m "Add git cheatsheet HTML"</td>
+            <td class="desc">Сохраняет снимок: файл теперь «вморожен» в историю. Сообщение описывает суть изменений.</td>
+        </tr>
+        <tr>
+            <td class="code">git branch -M main</td>
+            <td class="desc">Переименовывает текущую ветку в <code>main</code>. GitHub по умолчанию использует именно это имя. <code>-M</code> = force.</td>
+        </tr>
+        <tr>
+            <td class="code">git remote add origin https://github.com/USER/REPO.git</td>
+            <td class="desc">Привязывает удалённый репозиторий. Замените <code>USER/REPO</code> на ваш логин и имя репозитория.</td>
+        </tr>
+        <tr>
+            <td class="code">git push -u origin main</td>
+            <td class="desc">Отправляет файл на GitHub. После этого он появится в вашем репозитории. При первом пуше может запросить логин/токен.</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- РАЗДЕЛ 7. ТРИ "ЭТАЖА" GIT                                    -->
+    <!-- ============================================================ -->
+    <h2>🧠 Как работает Git: три «этажа»</h2>
+    <table class="cheat">
+        <tr>
+            <th>Этаж</th>
+            <th>Что это и как туда попасть</th>
+        </tr>
+        <tr>
+            <td class="code">Working Directory</td>
+            <td class="desc">Файлы, которые вы сейчас редактируете. Сюда они попадают автоматически — просто создайте файл.</td>
+        </tr>
+        <tr>
+            <td class="code">Staging Area</td>
+            <td class="desc">Промежуточная зона «подготовлено к коммиту». Попасть сюда — командой <code>git add</code>.</td>
+        </tr>
+        <tr>
+            <td class="code">Repository</td>
+            <td class="desc">Хранилище закоммиченных снимков. Попасть сюда — командой <code>git commit</code>.</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+</xmp>
